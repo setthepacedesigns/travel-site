@@ -18,6 +18,11 @@ gulp.task('watch', function () {
   watch('./app/assets/styles/**/*.css', function () {
     gulp.start('cssInject');
   });
+
+  watch('./app/assets/scripts/**/*.js', function () {
+    gulp.start('scriptsRefresh');
+  });
+
 });
 
 gulp.task('cssInject', ['styles'], function () {
@@ -26,5 +31,9 @@ gulp.task('cssInject', ['styles'], function () {
 });
 
 gulp.task('html', function () {
+  browserSync.reload();
+});
+
+gulp.task('scriptsRefresh', ['scripts'], function () {
   browserSync.reload();
 });
